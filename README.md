@@ -3,29 +3,31 @@ Step for how to create chart using Highcharts in Laravel 11?
 
 # Step 1: Install Laravel 11
 This step is not required; however, if you have not created the Laravel app, then you may go ahead and execute the below command:
-- composer create-project laravel/laravel lara11-highchartsjs-app
-
+```
+composer create-project laravel/laravel lara11-highchartsjs-app
+```
 # Step 2: Create Route
 First of all, we will create a simple route for creating a simple line chart. So let's add simple routes as below:
 routes/web.php
 
 tambahkan code:
-
+```
 Route::get('chart', [HighchartController::class, 'index']);
+```
 
 # Step 3: Create Controller
 Here, we will create a new controller named HighchartController. So let's add the code below to that controller file.
 app/Http/Controllers/HighchartController.php
 
 tambahkan code:
-
+```
 <?php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class HighchartController extends Controller
@@ -45,14 +47,15 @@ class HighchartController extends Controller
         return view('chart', compact('users'));
     }
 }
-
+```
 
 # Step 4: Create Blade File
+
 here, we need to create blade file and in this blade file we use highchart js and use their code.
 resources/views/chart.blade.php
 
 tambahkan code:
-
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,20 +124,26 @@ tambahkan code:
 });
 </script>
 </html>
-
+```
 
 # Step 5: Create Dummy Records
 Here, we need to add some dummy records on users table as monthly wise.
 
 you can create dummy records using laravel tinker command as bellow:
-- php artisan tinker
-- User::factory()->count(30)->create()
+```
+php artisan tinker
+User::factory()->count(30)->create()
+```
 
 You need to create users on each month with created date
 
 # Run Laravel App
 All the required steps have been done, now you have to type the given below command and hit enter to run the Laravel app:
-- php artisan serve
+```
+php artisan serve
+```
 
 Now, Go to your web browser, type the given URL and view the app output:
+```
 http://localhost:8000/chart
+```
